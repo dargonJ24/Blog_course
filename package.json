@@ -1,0 +1,23 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dargonJ24/Blog_course.git"
+  },
+  "keywords": [
+    "nodejs",
+    "bootrap"
+  ],
+  "author": "404",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dargonJ24/Blog_course/issues"
+  },
+  "homepage": "https://github.com/dargonJ24/Blog_course#readme"
+}
