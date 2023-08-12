@@ -4,5 +4,10 @@ class  NewsController{
         
         res.render("news")
     }
+    //[GET] /:slug
+    show(req,res){
+        res.send("NEWS DETAIL")
+
+    }
 }
 export default NewsController;
