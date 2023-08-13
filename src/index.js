@@ -26,8 +26,8 @@ app.engine('hbs', engine({
 
 app.set('view engine', 'hbs');
 const url_1="src\resources\views\home.hbs"
-app.set('views', path.join(dirname(fileURLToPath(import.meta.url)), './resources/views'));
-console.log(path.join(dirname(fileURLToPath(import.meta.url)), './resources/views'))
+app.set('views', path.join(dirname(fileURLToPath(import.meta.url)), 'resources','views'));
+
 //setup to use post
 app.use(express.urlencoded({
     extended:true
