@@ -4,10 +4,19 @@ import { dirname, join } from 'path';
 import { engine } from 'express-handlebars';
 import path from 'path';
 import { route } from "./routes/index.js";
-
-console.log(route)
+import { dbconnect } from "./config/db/index.js";
+import mongoose from "mongoose";
 const app = express();
 const port = 3000;
+//connect mongoose
+try{
+    console.log("connecting..")
+   mongoose.connect('mongodb://127.0.0.1:27017/f8_course')
+  .then(() => console.log('Connected!'));
+
+ }catch(error){
+    console.log('Connect failure')
+ }
 //seup static
 app.use(express.static(path.join(dirname(fileURLToPath(import.meta.url)), './public')))
 //set up handlebar
