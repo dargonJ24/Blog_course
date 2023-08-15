@@ -12,10 +12,14 @@
   <tbody>
      {{#each course}}
     <tr>
-      <th scope="row">{{@index}}</th>
+      <th scope="row">{{sum 1 @index}}</th>
       <td>{{this.name}}</td>
       <td>{{this.description}}</td>
       <td>{{this.createdAt}}</td>
+      <td>
+        <a class="btn btn-link" href="/courses/{{this._id}}/edit" role="button">Update</a>
+        <a class="btn btn-link" href="#" role="button">Delete</a>
+      </td>
     </tr>
     {{/each}}
   </tbody>

@@ -21,7 +21,10 @@ try{
 app.use(express.static(path.join(dirname(fileURLToPath(import.meta.url)), './public')))
 //set up handlebar
 app.engine('hbs', engine({
-    extname:'.hbs'
+    extname:'.hbs',
+    helpers:{
+        sum :(a,b)=>a+b
+    }
 }));
 
 app.set('view engine', 'hbs');

@@ -2,6 +2,15 @@ import { mongooseToObject, multipleMongooseToObject } from "../../until/mongoose
 import course from "../models/Course.js";
 
 class  CourseController{
+    //[GET]/courses/:id/edit
+    edit(req,res,next){
+      course.findById(req.params.id).
+      then(course=>res.render("courses/update",{
+        course:mongooseToObject(course)
+      })).
+      catch(next);
+      
+  }
   //[GET] /courses/{{this.slug}}
     show(req,res,next){
       course.findOne({slug:req.params.slug})
