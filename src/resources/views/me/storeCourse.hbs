@@ -1,0 +1,23 @@
+<div class0="mt-4">
+    <h3>My course</h3>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Time create</th>
+    </tr>
+  </thead>
+  <tbody>
+     {{#each course}}
+    <tr>
+      <th scope="row">{{@index}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.description}}</td>
+      <td>{{this.createdAt}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
