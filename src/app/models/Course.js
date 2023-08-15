@@ -8,14 +8,20 @@ const courseSchema=new Schema({
     description:{
         type:String,
         maxLength:255
+    }, videoid:{
+        type:String,
+        maxLength:255
+    },
+    slug:{
+        type:String,
+        maxLength:255
     },
     image:{
         type:String,
         maxLength:255
     },
-    createAt:{ type:Date,default:Date.now},
-    updateAt:{ type:Date,default:Date.now},
-})
+    
+},{timestamps:true})
 const course = mongoose.model('Course', courseSchema);
 
 export default course;
