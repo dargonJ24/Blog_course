@@ -5,3 +5,4 @@ npm i morgan
 npm i express-handlebars
 npm install express path
 npm i sass
+npm i mongoose-slug-generator

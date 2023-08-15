@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import slug from 'mongoose-slug-updater';
+mongoose.plugin(slug);
 const Schema =mongoose.Schema
 const courseSchema=new Schema({
     name:{
@@ -12,9 +14,10 @@ const courseSchema=new Schema({
         type:String,
         maxLength:255
     },
-    slug:{
-        type:String,
-        maxLength:255
+    slug: { 
+        type: String, 
+        slug: 'name',
+        unique: true
     },
     image:{
         type:String,

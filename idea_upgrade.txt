@@ -1,0 +1,5 @@
+1/ connect cloud mongoose 
+2/ page admin manage
+3/ page shoping 
+4/ encode
+5/ authorize

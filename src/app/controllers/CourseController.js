@@ -1,6 +1,6 @@
 import { mongooseToObject, multipleMongooseToObject } from "../../until/mongoose.js";
 import course from "../models/Course.js";
- 
+
 class  CourseController{
   //[GET] /courses/{{this.slug}}
     show(req,res,next){
