@@ -6,3 +6,4 @@ npm i express-handlebars
 npm install express path
 npm i sass
 npm i mongoose-slug-generator
+ npm i method-override

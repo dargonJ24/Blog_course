@@ -2,6 +2,19 @@ import { mongooseToObject, multipleMongooseToObject } from "../../until/mongoose
 import course from "../models/Course.js";
 
 class  CourseController{
+    //[PUT]/courses/:id
+    update(req,res,next){
+      
+      course.updateOne({_id : req.params.id},req.body).
+      then(  res.redirect("/me/courses/store")
+
+      )
+      .catch(next)
+     
+      
+    
+      
+  }
     //[GET]/courses/:id/edit
     edit(req,res,next){
       course.findById(req.params.id).

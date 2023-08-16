@@ -6,6 +6,7 @@ import path from 'path';
 import { route } from "./routes/index.js";
 import { dbconnect } from "./config/db/index.js";
 import mongoose from "mongoose";
+import methodOveride from "method-override"
 const app = express();
 const port = 3000;
 //connect mongoose
@@ -36,6 +37,7 @@ app.use(express.urlencoded({
     extended:true
 }))// process format  form data
 app.use(express.json()) // process format json'
+app.use(methodOveride('_method'))
 //setup route
 route(app)
 

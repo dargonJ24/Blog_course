@@ -2,6 +2,7 @@ import CourseController from "../app/controllers/CourseController.js";
 import express from "express";
 const courseController = new CourseController();
 const CourseRouter = express.Router();
+CourseRouter.put('/:id', courseController.update);
 CourseRouter.get('/:id/edit', courseController.edit);
 CourseRouter.post('/store', courseController.store);
 CourseRouter.get('/create', courseController.create);

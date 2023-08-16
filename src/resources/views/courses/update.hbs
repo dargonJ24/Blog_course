@@ -2,7 +2,7 @@
     <h3>
         Update course
     </h3>
-    <form  method="POST" action="/courses/store">
+    <form  method="POST" action="/courses/{{course._id}}?_method=PUT">
   <div class="form-group">
     <label for="name">Name course</label>
     <input type="text" class="form-control" id="name" value="{{course.name}}" name="name">
@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <label for="description">Description course</label>
-    <input type="text" class="form-control" id="description" name="description" value="{{course.description}}">
+    <textarea class="form-control" id="description" name="description" >{{course.description}}</textarea>
   </div>
 
   <div class="form-group">
