@@ -12,13 +12,13 @@ class  MeController{
      }
     //[GET]/me/course/store
     storeCourse(req,res,next){
-        course.find({
-            }).
-        then(course=>res.render("me/storeCourse",
-       { course: multipleMongooseToObject(course)}
-        )).
-        catch(next)
-
+        Promise.all([course.find({}),course.countDocumentsDeleted({})]).
+        then(([course,deletedcount])=>{
+            res.render("me/storeCourse",
+            { course: multipleMongooseToObject(course),deletedcount}
+             )
+        }).catch(next)
+        
         
     }
     //
