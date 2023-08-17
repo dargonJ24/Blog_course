@@ -2,6 +2,20 @@ import { mongooseToObject, multipleMongooseToObject } from "../../until/mongoose
 import course from "../models/Course.js";
 
 class  CourseController{
+  //[DELETE] /:id/fore
+  foredelete(req,res,next){
+    course.deleteOne({_id : req.params.id}).
+    then(res.redirect("back")).
+    catch(next)
+  }
+  //[PATCH] /:id/restore
+  restore(req,res,next){
+    course.restore({_id : req.params.id}).
+    then(res.redirect("/me/courses/store")).
+    catch(next)
+    
+    
+  }
   //[DELETE]/courses/:id
      delete(req,res,next){
       course.delete({_id : req.params.id}).
@@ -47,7 +61,7 @@ class  CourseController{
   .then(savedCourse => {
     // Handle the successful save
     console.log("Course saved:", savedCourse);
-    res.redirect("/")
+    res.redirect("/me/courses/store")
   })
   .catch(error => {
     // Handle the error

@@ -3,8 +3,7 @@ import course from "../models/Course.js"
 class  MeController{
      //[GET] /me/trash/course
      TrashCourse(req,res,next){
-        course.findDeleted({
-        }).
+        course.findWithDeleted({ deleted: true }).
         then(course=>res.render("me/trashcourse",
            {      course: multipleMongooseToObject(course)}
         )).

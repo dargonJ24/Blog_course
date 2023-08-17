@@ -18,7 +18,7 @@
       <td>{{this.description}}</td>
       <td>{{this.createdAt}}</td>
       <td>
-        <a class="btn btn-link" href="/courses/{{this._id}}/edit" >Update</a>
+        <a class="btn btn-link btn-restore" data-id="{{this._id}}"  >Retore</a>
        <a class="btn btn-link" href="#" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course">Delete</a>
       </td>
     </tr>
@@ -37,6 +37,8 @@
 </table>
 </div>
 {{!--hiden form--}}
+<form name="retore-form" method="POST" ></form>
+
 <form name="delete-form" method="POST" ></form>
 {{!--confirm delete --}}
 <!-- Modal -->
@@ -44,7 +46,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete course</h5>
+        <h5 class="modal-title" id="exampleModalLabel">permanently deleted</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -54,7 +56,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" id="btn-delete-course" class="btn btn-danger">Delete</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
         
       </div>
     </div>
@@ -66,6 +68,8 @@
     $(document).ready(function() {
       var courseid;
       var deleteForm = document.forms["delete-form"];
+      var restoreForm = document.forms["retore-form"];
+      var restorebtn=$(".btn-restore")
       $('#delete-course').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget);
         courseid = button.data('id');
@@ -73,11 +77,18 @@
       });
       var btnDeleteCourse =document.getElementById("btn-delete-course")
       btnDeleteCourse.onclick=function(){
-        deleteForm.action="/courses/"+courseid+"?_method=DELETE"
+        deleteForm.action="/courses/"+courseid+"/fore?_method=DELETE"
         deleteForm.submit()
       }
-       
-    
+      console.log(restorebtn)
+      //use jquery
+       restorebtn.click(function(e){
+        e.preventDefault()
+        var courseid=$(this).data("id")
+        restoreForm.action="/courses/"+courseid+"/restore?_method=PATCH"
+        console.log("/courses/"+courseid+"/restore?_method=PATCH")
+        restoreForm.submit()
+       })
       
     });
 
