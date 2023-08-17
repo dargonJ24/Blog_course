@@ -2,6 +2,12 @@ import { mongooseToObject, multipleMongooseToObject } from "../../until/mongoose
 import course from "../models/Course.js";
 
 class  CourseController{
+  //[DELETE]/courses/:id
+     delete(req,res,next){
+      course.delete({_id : req.params.id}).
+      then(res.redirect("back")).
+      catch(next)
+     }
     //[PUT]/courses/:id
     update(req,res,next){
       
