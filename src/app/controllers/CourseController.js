@@ -2,6 +2,21 @@ import { mongooseToObject, multipleMongooseToObject } from "../../until/mongoose
 import course from "../models/Course.js";
 
 class  CourseController{
+  //[POST] /handle-form-action
+  handleFormAction(req,res,next){
+   
+    
+    switch(req.body.action){
+      case "delete":
+        course.delete({_id : {$in:req.body.coursIds}}).
+        then(res.redirect("back")).
+        catch(next)
+        break
+      default:
+        res.json({mesage:'Action is invalid'})
+    }
+    
+  }
   //[DELETE] /:id/fore
   foredelete(req,res,next){
     course.deleteOne({_id : req.params.id}).

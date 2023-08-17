@@ -4,6 +4,7 @@ const courseController = new CourseController();
 const CourseRouter = express.Router();
 CourseRouter.patch('/:id/restore', courseController.restore);
 CourseRouter.delete('/:id', courseController.delete);
+CourseRouter.post('/handle-form-action', courseController.handleFormAction);
 CourseRouter.put('/:id', courseController.update);
 CourseRouter.get('/:id/edit', courseController.edit);
 CourseRouter.delete('/:id/fore', courseController.foredelete);

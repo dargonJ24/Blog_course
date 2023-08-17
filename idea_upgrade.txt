@@ -3,3 +3,7 @@
 3/ page shoping 
 4/ encode
 5/ authorize
+________________
+A1 : connect database cloud
+A2: Deloy web
+A3 : Add page admin
