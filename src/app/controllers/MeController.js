@@ -14,11 +14,11 @@ class  MeController{
     storeCourse(req,res,next){
         
         let courseQuery =course.find({})
-        // if(req.query.hasOwnProperty('_sort')){
-        //     courseQuery=courseQuery.sort({
-        //         [req.query.column] : req.query.type
-        //     })
-        // }
+        if(req.query.hasOwnProperty('_sort')){
+            courseQuery=courseQuery.sort({
+                [req.query.column] : req.query.type
+            })
+        }
         Promise.all([courseQuery,course.countDocumentsDeleted({})]).
         then(([course,deletedcount])=>{
             res.render("me/storeCourse",
