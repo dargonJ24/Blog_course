@@ -27,6 +27,7 @@ app.engine('hbs', engine({
     helpers:{
         sum :(a,b)=>a+b,
         sortable:(filed,sort)=>{
+            const sortType=filed==sort.column?sort.type:"default"
             const ions={
                 default:"chevron-collapse-outline",
                 asc:"chevron-up-outline",
@@ -37,13 +38,13 @@ app.engine('hbs', engine({
                 asc:"asc",
                 desc:"desc"
             }
-            const ion=ions[sort.type]
-            const type=types[sort.type]
-            return `<a href="?_sort&column=name&type=${type}">
+            const ion=ions[sortType]
+            const type=types[sortType]
+            return `<a href="?_sort&column=${filed}&type=${sort.type=='asc'?'desc':'asc'}">
             <span class="icon-wrapper">
               <ion-icon name=${ion}></ion-icon>
             </span>
-          </a>`
+          </a>`;
         }
 
         
