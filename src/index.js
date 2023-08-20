@@ -7,6 +7,7 @@ import { route } from "./routes/index.js";
 import { dbconnect } from "./config/db/index.js";
 import mongoose from "mongoose";
 import methodOveride from "method-override"
+import SortMiddlewares from "./app/SortMiddlewares/SortMiddlewares.js";
 const app = express();
 const port = 3000;
 //connect mongoose
@@ -24,10 +25,32 @@ app.use(express.static(path.join(dirname(fileURLToPath(import.meta.url)), './pub
 app.engine('hbs', engine({
     extname:'.hbs',
     helpers:{
-        sum :(a,b)=>a+b
+        sum :(a,b)=>a+b,
+        sortable:(filed,sort)=>{
+            const ions={
+                default:"chevron-collapse-outline",
+                asc:"chevron-up-outline",
+                desc:"chevron-down-outline"
+            }
+            const types={
+                default:"desc",
+                asc:"asc",
+                desc:"desc"
+            }
+            const ion=ions[sort.type]
+            const type=types[sort.type]
+            return `<a href="?_sort&column=name&type=${type}">
+            <span class="icon-wrapper">
+              <ion-icon name=${ion}></ion-icon>
+            </span>
+          </a>`
+        }
+
+        
     }
 }));
-
+//set up middleware 
+app.use(SortMiddlewares)
 app.set('view engine', 'hbs');
 const url_1="src\resources\views\home.hbs"
 app.set('views', path.join(dirname(fileURLToPath(import.meta.url)), 'resources','views'));
