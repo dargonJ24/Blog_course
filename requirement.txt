@@ -8,3 +8,4 @@ npm i sass
 npm i mongoose-slug-generator
  npm i method-override
  npm i mongoose-delete
+npm i mongoose@6.11.4

@@ -71,20 +71,30 @@ class  CourseController{
      store(req,res,next){
       const formdata =req.body
       formdata.image=`https://img.youtube.com/vi/${req.body.videoid}/default.jpg` //get thumnail youtube
-      var newCourse = new course(formdata);
-      newCourse.save()
-  .then(savedCourse => {
-    // Handle the successful save
-    console.log("Course saved:", savedCourse);
-    res.redirect("/me/courses/store")
-  })
-  .catch(error => {
-    // Handle the error
-    console.error("Error saving course:", error);
-    res.status(500).send("Error saving course");
-  });
+          var newCourse = new course(formdata);
+          newCourse.save().then(savedCourse => {
+          // Handle the successful save
+          console.log("Course saved:", savedCourse);
+          res.redirect("/me/courses/store")
+        })
+        .catch(error => {
+          // Handle the error
+          console.error("Error saving course:", error);
+          res.status(500).send("Error saving course");
+        });
+
+        
+      }catch(error){
+
+      }
+
+     
+      
+      
+      
+  
     
-    }
+    
     //[GET] /courses/create
     create(req,res,next){
       res.render("courses/create")

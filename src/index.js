@@ -10,6 +10,7 @@ import methodOveride from "method-override"
 import SortMiddlewares from "./app/SortMiddlewares/SortMiddlewares.js";
 const app = express();
 const port = 3000;
+
 //connect mongoose
 try{
     console.log("connecting..")
@@ -55,7 +56,7 @@ app.use(SortMiddlewares)
 app.set('view engine', 'hbs');
 const url_1="src\resources\views\home.hbs"
 app.set('views', path.join(dirname(fileURLToPath(import.meta.url)), 'resources','views'));
-
+mongoose.set('strictQuery', true);
 //setup to use post
 app.use(express.urlencoded({
     extended:true
