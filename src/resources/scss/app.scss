@@ -1,4 +1,13 @@
 @import 'variables';
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex-wrap: nowrap;
+  }
+
 .card-course-item{
     margin-top: 16px;
 }

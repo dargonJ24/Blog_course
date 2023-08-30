@@ -1,24 +1,62 @@
 import { mongooseToObject, multipleMongooseToObject } from "../../until/mongoose.js";
 import course from "../models/Course.js";
- 
+import SiteService from "../service/SiteService.js";
+const siteService=new SiteService()
 class  SitesController{
-    //[GET] /
-    index(req,res){
-        course.find({})
-  .then((courses) => {
-    //courses =courses.map(courses=>courses.toObject()) //fix bug process object for handlebars
-    res.render('home',{courses: multipleMongooseToObject(courses) })
+    
+     // test controller
+     test(req,res){
+      res.send("123")
+     }
+    // [GET] login 
+    login(req,res){
+      res.render("other/login")
+    }
+     
+    //[GET]
+    index(req,res) {
+      siteService.getAllCourse()
+  .then(response => {
+    if (response.status === 'OK') {
+      // Process the data
+     
+      res.render('home',{courses: response.data})
+    } else {
+      
+      console.error(response.message);
+    }
   })
-  .catch((err) => {
-    res.status(400).json({ err: 'message' });
+  .catch(error => {
+   
+    console.error(error);
   });
-        }
-        //res.render("home")
+    }
+   
     
     //[GET] /search
     search(req,res){
         res.render("search")
 
     }
+    //[POST] /search
+    
+    filter_course(req,res) {
+      siteService.search(req.params.slug)
+  .then(response => {
+    if (response.status === 'OK') {
+     
+     console.log(response.data)
+      res.render('home',{courses: response.data})
+    } else {
+      
+      console.error(response.message);
+    }
+  })
+  .catch(error => {
+   
+    console.error(error);
+  });
+    }
 }
+
 export default SitesController;

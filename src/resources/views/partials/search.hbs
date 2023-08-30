@@ -1,0 +1,25 @@
+<div class="search-container">
+  <form id="search-form" method="POST" action="/:">
+    <div class="form-group">
+      <label for="search-input">Keywords</label>
+      <div class="input-button-group">
+        <input type="text" name="name" class="form-control" id="search-input" placeholder="Enter keywords">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#search-form').submit(function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      const inputValue = $('#search-input').val();
+      // Set the form action URL
+      $(this).attr('action', '/' + inputValue);
+      // Submit the form
+      $(this).unbind('submit').submit();
+    });
+  });
+</script>
